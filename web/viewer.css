@@ -26,8 +26,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #404040;
-  background-image: url(images/texture.png);
+  background-color: #eeeeee;
 }
 
 body,
@@ -47,8 +46,7 @@ select {
 #viewerContainer:-webkit-full-screen {
   top: 0px;
   border-top: 2px solid transparent;
-  background-color: #404040;
-  background-image: url(images/texture.png);
+  background-color: #eeeeee;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -58,8 +56,7 @@ select {
 #viewerContainer:-moz-full-screen {
   top: 0px;
   border-top: 2px solid transparent;
-  background-color: #404040;
-  background-image: url(images/texture.png);
+  background-color: #eeeeee;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -76,15 +73,13 @@ select {
 }
 
 #viewerContainer:-ms-fullscreen::-ms-backdrop {
-  background-color: #404040;
-  background-image: url(images/texture.png);
+  background-color: #eeeeee;
 }
 
 #viewerContainer:fullscreen {
   top: 0px;
   border-top: 2px solid transparent;
-  background-color: #404040;
-  background-image: url(images/texture.png);
+  background-color: #eeeeee;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -272,8 +267,7 @@ html[dir='rtl'] #sidebarContent {
 #toolbarSidebar {
   width: 200px;
   height: 32px;
-  background-color: #424242; /* fallback */
-  background-image: url(images/texture.png),
+  background-color: #eeeeee;
                     linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25),
 
@@ -285,9 +279,7 @@ html[dir='rtl'] #sidebarContent {
 #toolbarContainer, .findbar, .secondaryToolbar {
   position: relative;
   height: 32px;
-  background-color: #474747; /* fallback */
-  background-image: url(images/texture.png),
-                    linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
+  background-color: #eeeeee;
   box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
               inset 0 1px 1px hsla(0,0%,0%,.15),
               inset 0 -1px 0 hsla(0,0%,100%,.05),
@@ -631,7 +623,7 @@ html[dir='rtl'] .splitToolbarButtonSeparator {
   padding: 2px 6px 0;
   border: 1px solid transparent;
   border-radius: 2px;
-  color: hsla(0,0%,100%,.8);
+  color: #333;
   font-size: 12px;
   line-height: 14px;
   -webkit-user-select: none;
@@ -738,7 +730,7 @@ html[dir='rtl'] .dropdownToolbarButton {
   -moz-appearance: none; /* in the future this might matter, see bugzilla bug #649849 */
   min-width: 140px;
   font-size: 12px;
-  color: hsl(0,0%,95%);
+  color: #333;
   margin: 0;
   padding: 0;
   border: none;
@@ -746,7 +738,7 @@ html[dir='rtl'] .dropdownToolbarButton {
 }
 
 .dropdownToolbarButton > select > option {
-  background: hsl(0,0%,24%);
+  background: #eee;
 }
 
 .promptButton {
@@ -1016,14 +1008,12 @@ html[dir='rtl'] .verticalToolbarSeparator {
   margin: 4px 0 4px 0;
   border: 1px solid transparent;
   border-radius: 2px;
-  background-color: hsla(0,0%,100%,.09);
-  background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
-  background-clip: padding-box;
+  background-color: #fff;
   border: 1px solid hsla(0,0%,0%,.35);
   border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
   box-shadow: 0 1px 0 hsla(0,0%,0%,.05) inset,
               0 1px 0 hsla(0,0%,100%,.05);
-  color: hsl(0,0%,95%);
+  color: #333;
   font-size: 12px;
   line-height: 14px;
   outline-style: none;
@@ -1066,7 +1056,7 @@ html[dir='rtl'] .verticalToolbarSeparator {
   margin: 4px 2px 4px 0;
   border: 1px solid transparent;
   border-radius: 2px;
-  color: hsl(0,0%,85%);
+  color: #333;
   font-size: 12px;
   line-height: 14px;
   text-align: left;
@@ -1278,7 +1268,7 @@ canvas {
   top: 0;
   right: 0;
   bottom: 0;
-  color: #000;
+  color: #333;
   font-family: sans-serif;
   overflow: hidden;
 }
@@ -1342,7 +1332,7 @@ canvas {
 
 .annotText > div > h1 {
   font-size: 1.2em;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #333;
   margin: 0px;
 }
 
@@ -1403,8 +1393,6 @@ canvas {
   line-height: 14px;
   text-align: center;
   background-color: #474747; /* fallback */
-  background-image: url(images/texture.png),
-                    linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
   box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
               inset 0 1px 1px hsla(0,0%,0%,.15),
               inset 0 -1px 0 hsla(0,0%,100%,.05),
