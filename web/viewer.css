@@ -1692,3 +1692,7 @@ canvas {
   }
 }
 
+#presentationMode,
+#openFile {
+    display: none;
+}
