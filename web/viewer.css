@@ -268,7 +268,6 @@ html[dir='rtl'] #sidebarContent {
   width: 200px;
   height: 32px;
   background-color: #eeeeee;
-                    linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25),
 
               inset 0 -1px 0 hsla(0,0%,100%,.05),
@@ -541,7 +540,7 @@ html[dir='rtl'] .splitToolbarButton > .toolbarButton {
 .splitToolbarButton:focus > .toolbarButton,
 .splitToolbarButton.toggled > .toolbarButton,
 .toolbarButton.textButton {
-  background-color: hsla(0,0%,0%,.12);
+  background-color: hsla(0,0%,100%,.12);
   background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
   background-clip: padding-box;
   border: 1px solid hsla(0,0%,0%,.35);
@@ -563,7 +562,7 @@ html[dir='rtl'] .splitToolbarButton > .toolbarButton {
 .promptButton:hover,
 .toolbarButton.textButton:hover,
 .toolbarButton.textButton:focus {
-  background-color: hsla(0,0%,0%,.2);
+  background-color: hsla(0,0%,100%,.5);
   box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset,
               0 0 1px hsla(0,0%,100%,.15) inset,
               0 0 1px hsla(0,0%,0%,.05);
@@ -656,7 +655,7 @@ html[dir='rtl'] .dropdownToolbarButton {
 .promptButton,
 .secondaryToolbarButton:hover,
 .secondaryToolbarButton:focus {
-  background-color: hsla(0,0%,0%,.12);
+  background-color: hsla(0,0%,100%,.12);
   background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
   background-clip: padding-box;
   border: 1px solid hsla(0,0%,0%,.35);
@@ -670,7 +669,7 @@ html[dir='rtl'] .dropdownToolbarButton {
 .promptButton:hover:active,
 .dropdownToolbarButton:hover:active,
 .secondaryToolbarButton:hover:active {
-  background-color: hsla(0,0%,0%,.2);
+  background-color: hsla(0,0%,100%,.2);
   background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
   border-color: hsla(0,0%,0%,.35) hsla(0,0%,0%,.4) hsla(0,0%,0%,.45);
   box-shadow: 0 1px 1px hsla(0,0%,0%,.1) inset,
@@ -687,7 +686,7 @@ html[dir='rtl'] .dropdownToolbarButton {
 .toolbarButton.toggled,
 .splitToolbarButton.toggled > .toolbarButton.toggled,
 .secondaryToolbarButton.toggled {
-  background-color: hsla(0,0%,0%,.3);
+  background-color: hsla(0,0%,100%,.3);
   background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
   border-color: hsla(0,0%,0%,.4) hsla(0,0%,0%,.45) hsla(0,0%,0%,.5);
   box-shadow: 0 1px 1px hsla(0,0%,0%,.1) inset,
