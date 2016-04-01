@@ -1480,6 +1480,7 @@ function webViewerInitialized() {
     appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
   }
 
+  PDFJS.disableTextLayer = true; //for testing - should remove better
   if ((typeof PDFJSDev === 'undefined' || !PDFJSDev.test('PRODUCTION')) ||
       PDFViewerApplication.viewerPrefs['pdfBugEnabled']) {
     // Special debugging flags in the hash section of the URL.

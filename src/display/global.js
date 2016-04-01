@@ -99,7 +99,6 @@ PDFJS.createPromiseCapability = createPromiseCapability;
  */
 PDFJS.maxImageSize = (PDFJS.maxImageSize === undefined ?
                       -1 : PDFJS.maxImageSize);
-
 /**
  * The url of where the predefined Adobe CMaps are located. Include trailing
  * slash.

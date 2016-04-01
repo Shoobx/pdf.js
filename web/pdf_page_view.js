@@ -192,6 +192,9 @@ class PDFPageView {
     div.appendChild(this.loadingIconDiv);
   }
 
+  if(this.canvas && this.canvas.toString().indexOf('fabric.Canvas') >= 0)
+	  PDFJS.fabricGlobals.fabricTransformCanvas(this.id, this.rotation, this.scale);
+
   update(scale, rotation) {
     this.scale = scale || this.scale;
     if (typeof rotation !== 'undefined') { // The rotation may be zero.
