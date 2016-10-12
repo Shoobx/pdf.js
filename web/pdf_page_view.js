@@ -92,6 +92,12 @@ class PDFPageView {
       canvasScale: this.scale,
       objs: null,
       rotation: this.rotation,
+      preTransform: {
+	scale: this.scale,
+	rotation: this.rotation,
+	height: this.height,
+	width: this.width,
+      },
     };
 
     let div = document.createElement('div');
@@ -196,6 +202,8 @@ class PDFPageView {
 	  PDFJS.fabricGlobals.fabricTransformCanvas(this.id, this.rotation, this.scale);
 
   update(scale, rotation) {
+    if(this.canvas && this.canvas.toString().indexOf('fabric.Canvas') >= 0)
+	    PDFJS.fabricGlobals.fabricStorePreTransformData(this.id, this.scale, this.rotation);
     this.scale = scale || this.scale;
     if (typeof rotation !== 'undefined') { // The rotation may be zero.
       this.rotation = rotation;
@@ -206,7 +214,6 @@ class PDFPageView {
       scale: this.scale * CSS_UNITS,
       rotation: totalRotation,
     });
-
     if (this.svg) {
       this.cssTransform(this.svg, true);
 
