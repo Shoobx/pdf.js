@@ -1237,6 +1237,8 @@ let PDFViewerApplication = {
   },
 
   rotatePages(delta) {
+    console.log('Rotation is not supported at this time!');
+    return;
     if (!this.pdfDocument) {
       return;
     }
@@ -1246,7 +1248,6 @@ let PDFViewerApplication = {
 
     pdfViewer.pagesRotation = newRotation;
     pdfThumbnailViewer.pagesRotation = newRotation;
-
     this.forceRendering();
     // Ensure that the active page doesn't change during rotation.
     pdfViewer.currentPageNumber = pageNumber;
