@@ -82,8 +82,8 @@ class SecondaryToolbar {
     this.items = {
       firstPage: options.firstPageButton,
       lastPage: options.lastPageButton,
-      pageRotateCw: options.pageRotateCwButton,
-      pageRotateCcw: options.pageRotateCcwButton,
+      /*pageRotateCw: options.pageRotateCwButton,
+      pageRotateCcw: options.pageRotateCcwButton,*/
     };
 
     this.mainContainer = mainContainer;
@@ -129,8 +129,8 @@ class SecondaryToolbar {
   _updateUIState() {
     this.items.firstPage.disabled = (this.pageNumber <= 1);
     this.items.lastPage.disabled = (this.pageNumber >= this.pagesCount);
-    this.items.pageRotateCw.disabled = this.pagesCount === 0;
-    this.items.pageRotateCcw.disabled = this.pagesCount === 0;
+    // this.items.pageRotateCw.disabled = this.pagesCount === 0;
+    // this.items.pageRotateCcw.disabled = this.pagesCount === 0;
   }
 
   _bindClickListeners() {
