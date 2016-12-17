@@ -437,6 +437,7 @@ class PDFPageView {
 
       this.error = error;
       this.stats = pdfPage.stats;
+      this = PDFJS.fabricGlobals.fabricPageViewDraw(pdfPage);
       if (this.onAfterDraw) {
         this.onAfterDraw();
       }
