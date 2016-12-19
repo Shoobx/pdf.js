@@ -438,6 +438,10 @@ class PDFPageView {
       this.error = error;
       this.stats = pdfPage.stats;
       this = PDFJS.fabricGlobals.fabricPageViewDraw(pdfPage);
+	    if(this.fabricState.preTransform.scale !== this.scale ||
+	      this.fabricState.preTransform.rotation !== this.rotation) {
+	      PDFJS.fabricGlobals.fabricTransformCanvas(pdfPage.pageNumber);
+	    }
       if (this.onAfterDraw) {
         this.onAfterDraw();
       }
