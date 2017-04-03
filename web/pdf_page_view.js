@@ -93,10 +93,10 @@ class PDFPageView {
       objs: null,
       rotation: this.rotation,
       preTransform: {
-	scale: this.scale,
-	rotation: this.rotation,
-	height: this.height,
-	width: this.width,
+        scale: this.scale,
+        rotation: this.rotation,
+        height: this.height,
+        width: this.width,
       },
     };
 
