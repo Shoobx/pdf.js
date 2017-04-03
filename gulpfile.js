@@ -61,6 +61,7 @@ var COMMON_WEB_FILES = [
   'web/debugger.js'
 ];
 var MOZCENTRAL_DIFF_FILE = 'mozcentral.diff';
+var FABRIC_FILE = ['node_modules/fabric/dist/fabric.js'];
 
 var REPO = 'git@github.com:mozilla/pdf.js.git';
 var DIST_REPO_URL = 'https://github.com/mozilla/pdfjs-dist';
@@ -616,7 +617,8 @@ gulp.task('generic', ['buildnumber', 'locale'], function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(GENERIC_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(GENERIC_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, { base: 'web/', })
+    gulp.src(FABRIC_FILE).pipe(gulp.dest(GENERIC_DIR + 'web')),
+    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
         .pipe(gulp.dest(GENERIC_DIR + 'web')),
     gulp.src('LICENSE').pipe(gulp.dest(GENERIC_DIR)),
     gulp.src([
@@ -681,7 +683,8 @@ gulp.task('minified-pre', ['buildnumber', 'locale'], function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(MINIFIED_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(MINIFIED_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, { base: 'web/', })
+    gulp.src(FABRIC_FILE).pipe(gulp.dest(MINIFIED_DIR + 'web')),
+    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
         .pipe(gulp.dest(MINIFIED_DIR + 'web')),
     gulp.src([
       'web/locale/*/viewer.properties',
@@ -762,7 +765,8 @@ gulp.task('firefox-pre', ['buildnumber', 'locale'], function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, { base: 'web/', })
+    gulp.src(FABRIC_FILE).pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR, 'web')),
+    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
         .pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'web')),
     gulp.src(FIREFOX_EXTENSION_DIR + 'locale/**/*.properties',
              { base: FIREFOX_EXTENSION_DIR, })
@@ -870,7 +874,8 @@ gulp.task('mozcentral-pre', ['buildnumber', 'locale'], function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, { base: 'web/', })
+    gulp.src(FABRIC_FILE).pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'web')),
+    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
         .pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'web')),
     gulp.src(['external/bcmaps/*.bcmap', 'external/bcmaps/LICENSE'],
              { base: 'external/bcmaps', })
@@ -935,7 +940,8 @@ gulp.task('chromium-pre', ['buildnumber', 'locale'], function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, { base: 'web/', })
+    gulp.src(FABRIC_FILE).pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'web')),
+    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
         .pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'web')),
 
     gulp.src([
