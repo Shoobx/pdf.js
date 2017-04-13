@@ -23,6 +23,7 @@ import {
 } from 'pdfjs-lib';
 import { getGlobalEventBus } from './dom_events';
 import { RenderingStates } from './pdf_rendering_queue';
+import { fabricMethods } from 'pdfjs/display/draw';
 
 /**
  * @typedef {Object} PDFPageViewOptions
@@ -440,8 +441,8 @@ class PDFPageView {
       this = PDFJS.fabricGlobals.fabricPageViewDraw(pdfPage);
 	    if(this.fabricState.preTransform.scale !== this.scale ||
 	      this.fabricState.preTransform.rotation !== this.rotation) {
-	      PDFJS.fabricGlobals.fabricTransformCanvas(pdfPage.pageNumber);
-	    }
+        fabricMethods.fabricTransformCanvas(pdfPage.pageNumber);
+      }
       if (this.onAfterDraw) {
         this.onAfterDraw();
       }
