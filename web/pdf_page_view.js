@@ -23,7 +23,7 @@ import {
 } from 'pdfjs-lib';
 import { getGlobalEventBus } from './dom_events';
 import { RenderingStates } from './pdf_rendering_queue';
-import { fabricMethods } from 'pdfjs/display/draw';
+import { fabricMethods } from './draw';
 
 /**
  * @typedef {Object} PDFPageViewOptions
