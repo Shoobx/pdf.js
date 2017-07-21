@@ -110,6 +110,7 @@ var PDFCustomFabricSetUp = function customFabricSetUp() {
     fromObject: function(objs, callback) {
       var self = this,
           enl = [];
+      debugger;
       fabric.util.enlivenObjects(objs.objects, function(enlivened) {
         enl = enlivened;
       });
@@ -244,7 +245,7 @@ function fabricCanvasSelectionCleared(options) {
 }
 
 var fabricMethods = {
-  fabricPageViewDraw: function(pageView) {
+  fabricPageViewDraw(pageView) {
     var pdfPage = PDFViewerApplication.pdfViewer._pages[pageView.pageNumber - 1];
     var page = document.getElementById('page' + pageView.pageNumber),
         pageCtx = page.getContext('2d'),
@@ -292,7 +293,7 @@ var fabricMethods = {
     fCanvas.renderAll();
     return pdfPage;
   },
-  fabricStorePreTransformData: function(pageNumber, oldScale, oldRotation) {
+    fabricStorePreTransformData(pageNumber, oldScale, oldRotation) {
     var page = PDFViewerApplication.pdfViewer.getPageView(pageNumber - 1);
     page.fabricState.preTransform = {
       scale: page.scale,
@@ -301,14 +302,15 @@ var fabricMethods = {
       width: page.width,
     };
   },
-  fabricTransformCanvas: function(pageNumber) {
-    var klass = drawAPIMethods.getCanvas(pageNumber),
+  fabricTransformCanvas(pageNumber) {
+    console.log('transform');
+    let klass = drawAPIMethods.getCanvas(pageNumber),
         pdfPage = PDFViewerApplication.pdfViewer.getPageView(pageNumber - 1),
         fabricState = pdfPage.fabricState,
         pageRotation = fabricState.preTransform.rotation,
         scale = fabricState.preTransform.scale;
     if ( scale === pdfPage.fabricState.scale && pageRotation === pdfPage.fabricState.rotation ) return;
-    var objs = klass.getObjects(),
+    let objs = klass.getObjects(),
         canvasScale = (pdfPage.fabricState.canvasScale / scale).toFixed(20),
         rotation = pdfPage.fabricState.rotation - pageRotation,
         rotationChanged = fabricState.preTransform.width != pdfPage.width,
@@ -358,10 +360,10 @@ var fabricMethods = {
     transformGroup.setCoords();
     //transformGroup.rotate(rotation);
     transformGroup.setCoords();
-    var tl = transformGroup.translateToOriginPoint(
+    let tl = transformGroup.translateToOriginPoint(
       transformGroup.oCoords.tl, 'left', 'top');
     /*transform stuff*/
-    var transformedObjs = [];
+    let transformedObjs = [];
     transformGroup._restoreObjectsState();
     transformGroup._objects.forEach(function(obj, i) {
       if ( obj.type != 'anchor' ) transformedObjs.push(obj);
@@ -377,7 +379,7 @@ var fabricMethods = {
   },
 };
 var drawAPIMethods = {
-  getObjByUUID: function(uuid) {
+  getObjByUUID(uuid) {
     var objs = PDFViewerApplication.pdfViewer._pages[uuid[0] - 1]
         .canvas._objects;
     for ( var i = 0; i < objs.length; i++ ) {
@@ -386,7 +388,7 @@ var drawAPIMethods = {
     }
     return null;
   },
-  fabricSaveTemplate: function pdfViewSaveTemplate() {
+  fabricSaveTemplate() {
     var fields = [],
         currentScale = PDFViewerApplication.pdfViewer.currentScale;
     for ( var i = 1; i <= PDFViewerApplication.pdfViewer.pagesCount; i++ ) {
@@ -416,7 +418,7 @@ var drawAPIMethods = {
     }
     return fields;
   },
-  fabricLoadTemplate: function(json) {
+    fabricLoadTemplate(json) {
     var scale = json[0].scale,
         scaleChanged = PDFViewerApplication.pdfViewer.currentScale === scale,
         self = this;
@@ -456,7 +458,7 @@ var drawAPIMethods = {
       });
     }
   },
-  getCanvas: function(page) {
+getCanvas(page) {
     return PDFViewerApplication.pdfViewer._pages[page - 1].canvas;
   },
   drawMode: true,

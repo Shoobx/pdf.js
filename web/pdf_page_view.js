@@ -199,12 +199,9 @@ class PDFPageView {
     div.appendChild(this.loadingIconDiv);
   }
 
-  if(this.canvas && this.canvas.toString().indexOf('fabric.Canvas') >= 0)
-	  PDFJS.fabricGlobals.fabricTransformCanvas(this.id, this.rotation, this.scale);
-
   update(scale, rotation) {
     if(this.canvas && this.canvas.toString().indexOf('fabric.Canvas') >= 0)
-	    PDFJS.fabricGlobals.fabricStorePreTransformData(this.id, this.scale, this.rotation);
+	  fabricMethods.fabricStorePreTransformData(this.id, this.scale, this.rotation);
     this.scale = scale || this.scale;
     if (typeof rotation !== 'undefined') { // The rotation may be zero.
       this.rotation = rotation;
@@ -248,8 +245,8 @@ class PDFPageView {
         });
         return;
       }
-      if (!this.zoomLayer && !this.canvas.hasAttribute('hidden')) {
-        this.zoomLayer = this.canvas.parentNode;
+      if (!this.zoomLayer) {
+        this.zoomLayer = this.canvas.lowerCanvasEl.parentNode;
         this.zoomLayer.style.position = 'absolute';
       }
     }
@@ -438,9 +435,10 @@ class PDFPageView {
 
       this.error = error;
       this.stats = pdfPage.stats;
-      this = PDFJS.fabricGlobals.fabricPageViewDraw(pdfPage);
+      console.log('add canvas here');
+      fabricMethods.fabricPageViewDraw(pdfPage);
 	    if(this.fabricState.preTransform.scale !== this.scale ||
-	      this.fabricState.preTransform.rotation !== this.rotation) {
+	       this.fabricState.preTransform.rotation !== this.rotation) {
         fabricMethods.fabricTransformCanvas(pdfPage.pageNumber);
       }
       if (this.onAfterDraw) {
