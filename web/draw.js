@@ -110,7 +110,6 @@ var PDFCustomFabricSetUp = function customFabricSetUp() {
     fromObject: function(objs, callback) {
       var self = this,
           enl = [];
-      debugger;
       fabric.util.enlivenObjects(objs.objects, function(enlivened) {
         enl = enlivened;
       });
@@ -294,13 +293,14 @@ var fabricMethods = {
     return pdfPage;
   },
     fabricStorePreTransformData(pageNumber, oldScale, oldRotation) {
-    var page = PDFViewerApplication.pdfViewer.getPageView(pageNumber - 1);
-    page.fabricState.preTransform = {
-      scale: page.scale,
-      rotation: page.rotation,
-      height: page.height,
-      width: page.width,
-    };
+      const page = PDFViewerApplication.pdfViewer.getPageView(pageNumber - 1);
+      page.fabricState.preTransform = {
+        scale: page.scale,
+        rotation: page.rotation,
+        height: page.height,
+        width: page.width,
+      };
+      console.log(page.fabricState.preTransform);
   },
   fabricTransformCanvas(pageNumber) {
     console.log('transform');
