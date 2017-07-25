@@ -436,11 +436,23 @@ class PDFPageView {
       this.error = error;
       this.stats = pdfPage.stats;
       console.log('add canvas here');
-      fabricMethods.fabricPageViewDraw(pdfPage);
-	    if(this.fabricState.preTransform.scale !== this.scale ||
-	       this.fabricState.preTransform.rotation !== this.rotation) {
-        fabricMethods.fabricTransformCanvas(pdfPage.pageNumber);
-      }
+      let pg = document.querySelector(`.page[data-page-number="${pdfPage.pageNumber}"]`),
+          dv = document.createElement('div');
+      dv.style.position = 'absolute';
+      dv.style.bottom = '90%';
+      dv.style.left = '10%';
+      // dv.style.transform = 'translateX(10%) translateY(10%)';
+      dv.style.zIndex = 10000;
+      pg.appendChild(dv);
+      dv.style.height = '10%';
+      dv.style.width = '10%';
+      dv.style.border = '1px solid #000';
+      dv.style.display = 'block';
+      // fabricMethods.fabricPageViewDraw(pdfPage);
+	    // if(this.fabricState.preTransform.scale !== this.scale ||
+	    //    this.fabricState.preTransform.rotation !== this.rotation) {
+      //   fabricMethods.fabricTransformCanvas(pdfPage.pageNumber);
+      // }
       if (this.onAfterDraw) {
         this.onAfterDraw();
       }
@@ -535,7 +547,7 @@ class PDFPageView {
       let actualSizeViewport = viewport.clone({ scale: CSS_UNITS, });
       // Use a scale that makes the canvas have the originally intended size
       // of the page.
-      outputScale.sx *= actualSizeViewport.width / viewport.width;
+      outputScale.sx *= actualSizeViewport.width / viewport.widt;h
       outputScale.sy *= actualSizeViewport.height / viewport.height;
       outputScale.scaled = true;
     }
