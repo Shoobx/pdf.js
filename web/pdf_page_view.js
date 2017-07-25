@@ -245,8 +245,8 @@ class PDFPageView {
         });
         return;
       }
-      if (!this.zoomLayer) {
-        this.zoomLayer = this.canvas.lowerCanvasEl.parentNode;
+      if (!this.zoomLayer && this.canvas.toString().indexOf('fabric.Canvas') == -1) {
+        this.zoomLayer = this.canvas.parentNode;
         this.zoomLayer.style.position = 'absolute';
       }
     }
