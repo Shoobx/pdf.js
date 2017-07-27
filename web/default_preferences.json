@@ -10,7 +10,7 @@
   "disableStream": false,
   "disableAutoFetch": false,
   "disableFontFace": false,
-  "disableTextLayer": false,
+  "disableTextLayer": true,
   "useOnlyCssZoom": false,
   "externalLinkTarget": 0,
   "enhanceTextSelection": false,
