@@ -61,11 +61,8 @@ var COMMON_WEB_FILES = [
   'web/images/*.{png,svg,gif,cur}',
   'web/debugger.js'
 ];
-<<<<<<< HEAD
 var FABRIC_FILE = ['node_modules/fabric/dist/fabric.js']
-=======
 var MOZCENTRAL_DIFF_FILE = 'mozcentral.diff';
->>>>>>> upstream/master
 
 var REPO = 'git@github.com:mozilla/pdf.js.git';
 var DIST_REPO_URL = 'https://github.com/mozilla/pdfjs-dist';
@@ -622,12 +619,8 @@ gulp.task('generic', gulp.series('buildnumber', 'locale', function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(GENERIC_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(GENERIC_DIR + 'web')),
-<<<<<<< HEAD
     gulp.src(FABRIC_FILE).pipe(gulp.dest(GENERIC_DIR + 'web')),
     gulp.src(COMMON_WEB_FILES, {base: 'web/'})
-=======
-    gulp.src(COMMON_WEB_FILES, { base: 'web/', })
->>>>>>> upstream/master
         .pipe(gulp.dest(GENERIC_DIR + 'web')),
     gulp.src('LICENSE').pipe(gulp.dest(GENERIC_DIR)),
     gulp.src([
@@ -690,14 +683,10 @@ gulp.task('minified-pre', gulp.series('buildnumber', 'locale', function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(MINIFIED_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(MINIFIED_DIR + 'web')),
-<<<<<<< HEAD
     gulp.src(FABRIC_FILE).pipe(gulp.dest(MINIFIED_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
-=======
     createImageDecodersBundle(builder.merge(defines, { IMAGE_DECODERS: true, }))
         .pipe(gulp.dest(MINIFIED_DIR + 'image_decoders')),
     gulp.src(COMMON_WEB_FILES, { base: 'web/', })
->>>>>>> upstream/master
         .pipe(gulp.dest(MINIFIED_DIR + 'web')),
     gulp.src([
       'web/locale/*/viewer.properties',
@@ -716,17 +705,6 @@ gulp.task('minified-pre', gulp.series('buildnumber', 'locale', function () {
     gulp.src('web/compressed.tracemonkey-pldi-09.pdf')
         .pipe(gulp.dest(MINIFIED_DIR + 'web')),
   ]);
-<<<<<<< HEAD
-});
-
-gulp.task('minified-post', ['minified-pre'], function () {
-  var viewerFiles = [
-    'external/webL10n/l10n.js',
-    'external/fabric.js/dist/fabric.js',
-    MINIFIED_DIR + BUILD_DIR + 'pdf.js',
-    MINIFIED_DIR + '/web/viewer.js'
-  ];
-=======
 }));
 
 gulp.task('minified-post', gulp.series('minified-pre', function (done) {
@@ -735,11 +713,12 @@ gulp.task('minified-post', gulp.series('minified-pre', function (done) {
     fs.readFileSync(MINIFIED_DIR + '/build/pdf.worker.js').toString();
   var pdfImageDecodersFile = fs.readFileSync(MINIFIED_DIR +
     '/image_decoders/pdf.image_decoders.js').toString();
-  var viewerFiles = {
-    'pdf.js': pdfFile,
-    'viewer.js': fs.readFileSync(MINIFIED_DIR + '/web/viewer.js').toString(),
-  };
->>>>>>> upstream/master
+  var viewerFiles = [
+    'external/webL10n/l10n.js',
+    'external/fabric.js/dist/fabric.js',
+    MINIFIED_DIR + BUILD_DIR + 'pdf.js',
+    MINIFIED_DIR + '/web/viewer.js'
+  ];
 
   console.log();
   console.log('### Minifying js files');
@@ -775,30 +754,9 @@ gulp.task('minified-post', gulp.series('minified-pre', function (done) {
 
 gulp.task('minified', gulp.series('minified-post'));
 
-<<<<<<< HEAD
-  var localizedMetadata =
-    fs.readFileSync(FIREFOX_EXTENSION_DIR + 'metadata.inc').toString();
-  var chromeManifestLocales =
-    fs.readFileSync(FIREFOX_EXTENSION_DIR + 'chrome.manifest.inc').toString();
-  var version = getVersionJSON().version;
-
-  return merge([
-    createBundle(defines).pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'build')),
-    createWebBundle(defines).pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'web')),
-    gulp.src(FABRIC_FILE).pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR, 'web')),
-    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
-        .pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'web')),
-    gulp.src(FIREFOX_EXTENSION_DIR + 'locale/**/*.properties',
-             {base: FIREFOX_EXTENSION_DIR})
-        .pipe(gulp.dest(FIREFOX_BUILD_DIR)),
-    gulp.src(['external/bcmaps/*.bcmap', 'external/bcmaps/LICENSE'],
-             {base: 'external/bcmaps'})
-        .pipe(gulp.dest(FIREFOX_BUILD_CONTENT_DIR + 'web/cmaps')),
-=======
 function preprocessDefaultPreferences(content) {
   var preprocessor2 = require('./external/builder/preprocessor2.js');
   var licenseHeader = fs.readFileSync('./src/license_header.js').toString();
->>>>>>> upstream/master
 
   var GLOBALS = '/* eslint-disable */\n';
   var MODIFICATION_WARNING =
@@ -834,12 +792,8 @@ gulp.task('mozcentral-pre', gulp.series('buildnumber', 'locale', function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'web')),
-<<<<<<< HEAD
     gulp.src(FABRIC_FILE).pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
-=======
     gulp.src(COMMON_WEB_FILES, { base: 'web/', })
->>>>>>> upstream/master
         .pipe(gulp.dest(MOZCENTRAL_CONTENT_DIR + 'web')),
     gulp.src(['external/bcmaps/*.bcmap', 'external/bcmaps/LICENSE'],
              { base: 'external/bcmaps', })
@@ -884,12 +838,8 @@ gulp.task('chromium-pre', gulp.series('buildnumber', 'locale', function () {
   return merge([
     createBundle(defines).pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'build')),
     createWebBundle(defines).pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'web')),
-<<<<<<< HEAD
     gulp.src(FABRIC_FILE).pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'web')),
-    gulp.src(COMMON_WEB_FILES, {base: 'web/'})
-=======
     gulp.src(COMMON_WEB_FILES, { base: 'web/', })
->>>>>>> upstream/master
         .pipe(gulp.dest(CHROME_BUILD_CONTENT_DIR + 'web')),
 
     gulp.src([

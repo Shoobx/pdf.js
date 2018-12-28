@@ -82,10 +82,6 @@ class SecondaryToolbar {
       { element: options.firstPageButton, eventName: 'firstpage',
         close: true, },
       { element: options.lastPageButton, eventName: 'lastpage', close: true, },
-      { element: options.pageRotateCwButton, eventName: 'rotatecw',
-        close: false, },
-      { element: options.pageRotateCcwButton, eventName: 'rotateccw',
-        close: false, },
       { element: options.cursorSelectToolButton, eventName: 'switchcursortool',
         eventDetails: { tool: CursorTool.SELECT, }, close: true, },
       { element: options.cursorHandToolButton, eventName: 'switchcursortool',
@@ -144,57 +140,6 @@ class SecondaryToolbar {
     });
   }
 
-<<<<<<< HEAD
-  SecondaryToolbar.prototype = {
-    /**
-     * @return {boolean}
-     */
-    get isOpen() {
-      return this.opened;
-    },
-
-    setPageNumber: function SecondaryToolbar_setPageNumber(pageNumber) {
-      this.pageNumber = pageNumber;
-      this._updateUIState();
-    },
-
-    setPagesCount: function SecondaryToolbar_setPagesCount(pagesCount) {
-      this.pagesCount = pagesCount;
-      this._updateUIState();
-    },
-
-    reset: function SecondaryToolbar_reset() {
-      this.pageNumber = 0;
-      this.pagesCount = 0;
-      this._updateUIState();
-    },
-
-    _updateUIState: function SecondaryToolbar_updateUIState() {
-      var items = this.items;
-
-      items.firstPage.disabled = (this.pageNumber <= 1);
-      items.lastPage.disabled = (this.pageNumber >= this.pagesCount);
-      /*items.pageRotateCw.disabled = this.pagesCount === 0;
-      items.pageRotateCcw.disabled = this.pagesCount === 0;*/
-    },
-
-    _bindClickListeners: function SecondaryToolbar_bindClickListeners() {
-      // Button to toggle the visibility of the secondary toolbar.
-      this.toggleButton.addEventListener('click', this.toggle.bind(this));
-
-      // All items within the secondary toolbar.
-      for (var button in this.buttons) {
-        var element = this.buttons[button].element;
-        var eventName = this.buttons[button].eventName;
-        var close = this.buttons[button].close;
-
-        element.addEventListener('click', function (eventName, close) {
-          if (eventName !== null) {
-            this.eventBus.dispatch(eventName, { source: this, });
-          }
-          if (close) {
-            this.close();
-=======
   /**
    * @return {boolean}
    */
@@ -224,8 +169,8 @@ class SecondaryToolbar {
   _updateUIState() {
     this.items.firstPage.disabled = (this.pageNumber <= 1);
     this.items.lastPage.disabled = (this.pageNumber >= this.pagesCount);
-    this.items.pageRotateCw.disabled = this.pagesCount === 0;
-    this.items.pageRotateCcw.disabled = this.pagesCount === 0;
+    /*this.items.pageRotateCw.disabled = this.pagesCount === 0;
+    this.items.pageRotateCcw.disabled = this.pagesCount === 0;*/
   }
 
   _bindClickListeners() {
@@ -241,7 +186,6 @@ class SecondaryToolbar {
           let details = { source: this, };
           for (let property in eventDetails) {
             details[property] = eventDetails[property];
->>>>>>> upstream/master
           }
           this.eventBus.dispatch(eventName, details);
         }
