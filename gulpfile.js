@@ -713,12 +713,10 @@ gulp.task('minified-post', gulp.series('minified-pre', function (done) {
     fs.readFileSync(MINIFIED_DIR + '/build/pdf.worker.js').toString();
   var pdfImageDecodersFile = fs.readFileSync(MINIFIED_DIR +
     '/image_decoders/pdf.image_decoders.js').toString();
-  var viewerFiles = [
-    'external/webL10n/l10n.js',
-    'external/fabric.js/dist/fabric.js',
-    MINIFIED_DIR + BUILD_DIR + 'pdf.js',
-    MINIFIED_DIR + '/web/viewer.js'
-  ];
+  var viewerFiles = {
+    'pdf.js': pdfFile,
+    'viewer.js': fs.readFileSync(MINIFIED_DIR + '/web/viewer.js').toString(),
+  };
 
   console.log();
   console.log('### Minifying js files');
